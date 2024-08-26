@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{thmtools}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Cyan!15}
+\colorlet{LightGreen}{Green!15}
+\colorlet{LightPink}{Magenta!30!White}
+\colorlet{Yellow}{Yellow!30}
+
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\declaretheoremstyle[name=Theorem,]{thmsty}
+\declaretheorem[style=thmsty,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{colback=LightGray}
+
+\declaretheoremstyle[name=Proposition,]{prosty}
+\declaretheorem[style=prosty,numberlike=theorem]{proposition}
+\tcolorboxenvironment{proposition}{colback=LightOrange}
+
+\declaretheoremstyle[name=Principle,]{prcpsty}
+\declaretheorem[style=prcpsty,numberlike=theorem]{principle}
+\tcolorboxenvironment{principle}{colback=LightGreen}
+
+\declaretheoremstyle[name=Definition,]{defsty}
+\declaretheorem[style=defsty,numberlike=theorem]{definition}
+\tcolorboxenvironment{definition}{colback=LightPink}
+
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+% ------------------------------------------------------------------------------
+
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+
+\title{ \normalsize \textsc{}
+		\\ [2.0cm]
+		\HRule{1.5pt} \\
+		\LARGE \textbf{\uppercase{Math1064 Summary Notes}}
+		\HRule{2.0pt} \\ [0.6cm] \LARGE{Formulas and Theorems} \vspace*{10\baselineskip}}
+\date{}
+\author{\textbf{Author} \\ 
+		Tiana \\
+		Smarty Pants}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+% ------------------------------------------------------------------------------
+
+\section{Examples}
+
+\begin{theorem}
+    This is a theorem.
+\end{theorem}
+
+\begin{proposition}
+    This is a proposition.
+\end{proposition}
+
+\begin{principle}
+    This is a principle.
+\end{principle}
+
+\newpage
+% Week 3 content - division and tings
+\section{Divisibility and Modular Arithmetic}
+\subsection{Division}
+\begin{principle}
+    \( a \mid b \) if there exists some \( k \in \mathbb{Z} \) such that \( b = a \cdot k \). 
+    We denote this by \( a \mid b \).
+\end{principle}
+
+\begin{theorem}
+    Let \( a, b, c \in \mathbb{Z} \) and \( a \neq 0 \). Then:
+    \begin{enumerate}
+        \item If \( a \mid b \) and \( a \mid c \), then \( a \mid (b + c) \).
+        \item If \( a \mid b \), then \( a \mid bc \).
+        \item If \( a \mid b \), \( b \neq 0 \), and \( b \mid c \), then \( a \mid c \).
+    \end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+    If \( a, b, \) and \( c \) are integers, where \( a \neq 0 \), such that \( a \mid b \) and \( a \mid c \), then \( a \mid (mb + nc) \) whenever \( m \) and \( n \) are integers.
+\end{proposition}
+
+\subsection{The Division Algorithm}
+\begin{theorem}
+    Let \( a \) be an integer and \( d \) a positive integer. Then there are unique integers \( q \) and \( r \), with \( 0 \leq r < d \), such that \( a = dq + r \).
+    Here, \( d \) is called the divisor, \( a \) is called the dividend, \( q \) is called the quotient, and \( r \) is called the remainder.
+\end{theorem}
+
+\subsection{Modular Arithmetic}
+\begin{definition}
+    \( a \) is congruent to \( b \) modulo \( m \) if \( m \) divides \( a - b \) (where \( a, b \in \mathbb{Z} \) and \( m > 0 \)).
+    We use the notation \( a \equiv b \pmod{m} \) to indicate that \( a \) is congruent to \( b \) modulo \( m \).
+\end{definition}
+
+\begin{theorem}
+    Let \( a \) and \( b \) be integers, and let \( m \) be a positive integer. Then \( a \equiv b \pmod{m} \) if and only if \( a \bmod m = b \bmod m \).
+\end{theorem}
+
+\begin{theorem}
+    The integers \( a \) and \( b \) are congruent modulo \( m \) if and only if there is an integer \( k \) such that \( a = b + km \) for \( m > 0 \).
+\end{theorem}
+
+\begin{theorem}
+    Let \( m \) be a positive integer. If \( a \equiv b \pmod{m} \) and \( c \equiv d \pmod{m} \), then \( a + c \equiv b + d \pmod{m} \) and \( ac \equiv bd \pmod{m} \).
+\end{theorem}
+
+\section{Primes and Greatest Common Divisors}
+\subsection{Primes}
+\begin{proposition}
+    An integer \( p \) greater than 1 is called prime if the only positive factors of \( p \) are 1 and \( p \). 
+    A positive integer that is greater than 1 and is not prime is called composite.
+\end{proposition}
+
+\begin{theorem}
+    The Fundamental Theorem of Arithmetic: Every integer greater than 1 can be written uniquely as a prime or as the product of two or more primes 
+    (primes can repeat and be counted as powers).
+\end{theorem}
+
+\begin{theorem}
+    If \( n \) is a composite integer, then \( n \) has a prime divisor less than or equal to \( \sqrt{n} \).
+\end{theorem}
+
+\subsection{Greatest Common Divisors and Least Common Multiples}
+\begin{definition}
+    Let \( a \) and \( b \) be integers, not both zero. The largest integer \( d \) such that \( d \mid a \) and \( d \mid b \) is called the greatest common divisor of \( a \) and \( b \), denoted by \( \gcd(a, b) \).
+\end{definition}
+
+\begin{definition}
+    The integers \( a \) and \( b \) are relatively prime if their greatest common divisor is 1.
+\end{definition}
+
+\begin{definition}
+    The least common multiple of the positive integers \( a \) and \( b \) is the smallest positive integer that is divisible by both \( a \) and \( b \). 
+    Denoted by \( \text{lcm}(a, b) \).
+\end{definition}
+
+\begin{theorem}
+    \( \gcd(a, b) = p^{\min(a_1, b_1)} \cdot p^{\min(a_2, b_2)} \cdot \ldots \cdot p^{\min(a_n, b_n)} \) - 
+    so take the smallest common prime out of the prime decomposition of \( a \) and \( b \) and take the product.
+\end{theorem}
+
+\begin{theorem}
+    \( \text{lcm}(a, b) = p^{\max(a_1, b_1)} \cdot p^{\max(a_2, b_2)} \cdot \ldots \cdot p^{\max(a_n, b_n)} \)
+     - so take the greatest common primes out of the prime decomposition and take the product.
+\end{theorem}
+
+% ------------------------------------------------------------------------------
+
+\end{document}
