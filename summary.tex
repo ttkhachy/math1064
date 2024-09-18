@@ -171,6 +171,11 @@
 \begin{theorem}
     ALGORITHM 1 The Euclidean Algorithm.\
     to find the \( \gcd(a, b)\) we can take use the euclidean algorithm. we continusly use the division algorithm until
+    \begin{enumerate}
+        \item Write \( a = q \cdot b + r \) by the Division Algorithm.
+        \item If \( r = 0 \), then \( \gcd(a,b) = b \). (i.e., if \( a \mid b \))
+        \item If \( r \neq 0 \), replace \( (a,b) \) with \( (b,r) \) and repeat until you reach a remainder of 0.
+    \end{enumerate}    
     the FIX THIS WITH PROPER DEFINITUON
 \end{theorem}
 \begin{theorem}
@@ -178,7 +183,6 @@
 \end{theorem}
 \begin{theorem}
     Let \( m \) be a positive integer and let \( a \), \( b \), and \( c \) be integers. If \( ac \equiv bc \pmod{m} \) and \( \gcd(c,m) = 1 \), then \( a \equiv b \pmod{m}. \)
-    % NEED TO FIX THIS ALSO
 \end{theorem}
 
 \section{Counting}
