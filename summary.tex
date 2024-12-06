@@ -76,6 +76,27 @@
 % ------------------------------------------------------------------------------
 
 % Week 3 content - division and tings
+\section{Set Theory}
+\begin{theorem}
+    To show that two sets \(A\) and \(B\) are equal, show that \( A \subseteq B\) and \( B \subseteq A\)
+\end{theorem}
+\begin{theorem}
+    The power set of a set \(S\) is the set of all subsets of the set \(S\). 
+    If a set has \( n \) elements, then its power set has \( 2^n \) elements.
+\end{theorem}
+\begin{definition}
+    Let \( A \) and \( B \) be sets. The \textit{Cartesian product} of \( A \) and \( B \), denoted by \( A \times B \), is the set of all ordered pairs \( (a, b) \), where \( a \in A \) and \( b \in B \). Hence,
+    \[
+    A \times B = \{ (a, b) \mid a \in A \land b \in B \}.
+    \]
+\end{definition}
+\begin{definition}
+    The \textit{Cartesian product} of the sets \( A_1, A_2, \dots, A_n \), denoted by \( A_1 \times A_2 \times \dots \times A_n \), is the set of ordered \( n \)-tuples \( (a_1, a_2, \dots, a_n) \), where \( a_i \) belongs to \( A_i \) for \( i = 1, 2, \dots, n \). In other words,
+    \[
+    A_1 \times A_2 \times \dots \times A_n = \{ (a_1, a_2, \dots, a_n) \mid a_i \in A_i \text{ for } i = 1, 2, \dots, n \}.
+    \]
+\end{definition}
+
 \section{Divisibility and Modular Arithmetic}
 \subsection{Division}
 \begin{principle}
@@ -186,7 +207,44 @@
 \end{theorem}
 
 \section{Counting}
-
+\begin{theorem}
+    \textbf{Case 1: Order matters, Repetitions allowed: Multiplication Rule}
+    Suppose that a procedure can be broken down into a sequence of two (or more) tasks. 
+    If there are $n_1$ ways to do the first task and for each of these ways of doing the first task, 
+    there are $n_2$ ways to do the second task, then there are $n_1 n_2$ ways to do the procedure.
+    \[
+    |A_1 \times A_2 \times \cdots \times A_m| = |A_1| \cdot |A_2| \cdot \cdots \cdot |A_m|.
+    \]
+\end{theorem}
+\begin{theorem}
+    \textbf{Case 2: Order matters, Repetition not allowed: Permutations}
+    If $n$ and $r$ are integers with $0 \leq r \leq n$, then 
+    \[
+    C(n, k) = \frac{n!}{(n - k)!}.
+    \]
+    Essentially, reducing the numebr of choices for each choice to exclude repetitions
+\end{theorem}
+\begin{theorem}
+    \textbf{Case 3: Order doesnt matter, Repetition not allowed: n choose k}
+    The number of $k$-combinations of a set with $n$ elements, where $n$ is a nonnegative integer and $k$ is an integer with $0 \leq k \leq n$, equals
+    \[
+    C(n, k) = \frac{n!}{k!(n - k)!}.
+    \]
+\end{theorem}
+\begin{proposition}
+    For all \( n, k \in \mathbb{Z} \) such that $0 \leq k \leq n$
+    \[
+    \binom{n}{k} = \binom{n}{n - k}
+    \]
+    Choosing 3 books out of 7 is the same ad not choosing 4 books out of 7?
+\end{proposition}
+\begin{theorem}
+    \textbf{Case 4: Order doesnt matter, Repetition allowed: Stars and Bars}
+    the idea is we want to find a way to distribute \(k\) stars and \(n-1\) bars
+    \[
+    \binom{k + n - 1}{n - 1} 
+    \]
+\end{theorem}
 
 \section{Probability}
 \subsection{Finite Probability}
@@ -210,6 +268,12 @@
     p(E \mid F) = \frac{p(E \cap F)}{p(F)}
     \]
 \end{definition}
+\begin{theorem}
+    Finding the probability of an event \(F\) by considering whether another event \(E\) occurs or not.
+    \[ 
+    P(F) = P(F \mid E) \cdot P(E) + P(F \mid \overline{E}) \cdot P(\overline{E})
+    \]
+\end{theorem}
 \subsection{Independence}
 \begin{definition}
     The events \(E \) and \(F \) are independent if and only if \(p(E \cap F) = p(E) \cdot p(F)\).
@@ -227,7 +291,7 @@
 \begin{theorem}
     Suppose that \( E \) and \( F \) are events from a sample space \( S \) such that \( p(E) \neq 0 \) and \( p(F) \neq 0 \). Then,
     \[
-    p(F \mid E) = \frac{p(E \mid F)p(F)}{p(E \mid F)p(F) + p(E \mid \overline{F})p(\overline{F})}.
+    p(F \mid E) = \frac{p(E \mid F)p(F)}{p(E \mid F)p(F) + p(E \mid \overline{F})p(\overline{F})} . p(E \mid F)
     \]
 \end{theorem}
 \subsection{Expected Value and Variance}
@@ -283,11 +347,142 @@
     \]
 \end{theorem}
 \section{Graphs}
+\subsection{Graph Terminology}
+\begin{definition}
+    an edge \(e\) and vertex \(v\) are called incident if \(v\) is an endpoint of \(e\)
+\end{definition}
+\begin{definition}
+    Two vertices \(u\) and \(v\) in an undirected graph \(G\)are called adjacent (or neighbors) in \(G\) if \(u\) and \(v\) are endpoints of an edge \(e\) of \(G\).
+    i.e if there is an edge which connects them
+\end{definition}
+\begin{definition}
+    The \textit{degree} of a vertex in an \textit{undirected graph} is the number of edges incident with it, except that a loop at a vertex contributes twice to the degree of that vertex. The degree of the vertex \( v \) is denoted by \( \text{deg}(v) \).
+\end{definition}
+\begin{theorem}
+    Let \( G = (V, E) \) be an undirected graph with \( m \) edges. Then
+    \[
+    2m = \sum_{v \in V} \deg(v).
+    \]
+    Therefore, it follows that for any graph \(G\), there mush be an even number as the sum of degrees.
+\end{theorem}
+\begin{definition}
+    A simple graph \( G \) is called \textit{bipartite} if its vertex set \( V \) can be partitioned into two disjoint sets \( V_1 \) and \( V_2 \) such that every edge in the graph connects a vertex in \( V_1 \) and a vertex in \( V_2 \) (so that no edge in \( G \) connects either two vertices in \( V_1 \) or two vertices in \( V_2 \)). When this condition holds, we call the pair \( (V_1, V_2) \) a \textit{bipartition} of the vertex set \( V \) of \( G \).
+\end{definition}
+\subsection{Euler}
+\begin{theorem}
+    A connected multigraph with at least two vertices has an Euler circuit if and only if each of its vertices has even degree.
+\end{theorem}
+\subsection{Adjacency Matrices for Graphs}
+\begin{definition}
+    isomorphism
+\end{definition}
+\begin{definition}
+    3 things to check for to test for graph isomorphism. Isomorphic simple graphs must have
+    \begin{enumerate}
+        \item The same number of edges
+        \item The same number of vertices
+        \item The same list of degrees of the vertices
+    \end{enumerate}
+    If any of these are not true, the graph cannot be isomorphic
+\end{definition}
+\begin{theorem}
+    The number of paths from vertex \(i\) to vertex \(j\) is graph \(G\) of length \(k\) is the \((ij)\) entry of the matrix \(G\) to the power of \(k\).
+    As in you multiply \(G\) by itself \(k\) times and then find the \((ij)\) entry
+\end{theorem}
 
+\section{Relations}
+\begin{definition}
+    Let \( X \), \( Y \) be two sets. A relation R from \( X \) to \( Y \) is a subset \( R \subseteq X \times Y \). (Cartesian product of \( X \) and \( Y \))
+\end{definition}
+\begin{definition}
+    We say a relation \( R \) on a set \( A \) is
+    \begin{enumerate}
+        \item \textit{reflexive} if \( (a, a) \in R \) for every element \( a \in A \). i.e \( a \) is related to itself by the given relation.
+        \item \textit{symmetric} if \( (b, a) \in R \) whenever \( (a, b) \in R \), for all \( a, b \in A \). i.e the relation is commutative. For the matrix, if \( m_{ij} = 1\) then \(m{ji} = 1\) and same for 0.
+        \item \textit{transitive} if whenever \( (a, b) \in R \) and \( (b, c) \in R \), then \( (a, c) \in R \), for all \( a, b, c \in A \).
+    \end{enumerate}
+\end{definition}
+\begin{definition}
+    The relation \( R \) is antisymmetric if \( (a, b) \in R \) and \( (b, a) \in R \) imply that \( a = b \). 
+    the matrix of an antisymmetric relation has the property that if \( m_{ij} = 1 \) with \(i \neq j\) , then \( m_{ji} = 0 \)
 
+\end{definition}
 
+\section{Propositional Logic}
+\begin{definition}
+    Let \( p \) be a proposition. The \textbf{negation of} \( p \), denoted by \( \neg p \) is the statement ``not \( p \).''
+    The truth value of the negation of \( p \), \( \neg p \), is the opposite of the truth value of \( p \).
+\end{definition}
+\begin{definition}
+    Let \( p \) and \( q \) be propositions. The \textbf{disjunction of} \( p \) and \( q \), denoted by \( p \lor q \), is \( p \lor q \) is false when both \( p \) and \( q \) are false and is true otherwise.
+\end{definition}
+\begin{definition}
+    Let \( p \) and \( q \) be propositions. The \textbf{conjunction of} \( p \) and \( q \), denoted by \( p \land q \), is \( p \land q \) is true when both \( p \) and \( q \) are true and is false otherwise.
+\end{definition}
 
+\subsection{Quantifiers}
+\begin{definition}
+    The notation $\forall x \, P(x)$ denotes the universal quantification of $P(x)$.
+\end{definition}
+\begin{definition}
+    We use the notation $\exists x \, P(x)$ for the existential quantification of $P(x)$. 
+    Here $\exists$ is called the \textbf{existential quantifier}.
+\end{definition}
+\begin{theorem}
+    \textbf{Negating Quantified Predicates}
+    \[
+    \neg \forall x \, P(x) \equiv \exists x \, \neg P(x)
+    \]
+    \[
+    \neg \exists x \, Q(x) \equiv \forall x \, \neg Q(x)
+    \]
+\end{theorem}
 
+\subsection{Closures}
+\begin{theorem}
+    We say a relation \( R \) on a set \( A \) is
+    \begin{enumerate}
+        \item The \textit{reflexive closure} of a relation \( R \) is obtained by adding \( (a, a) \) to \( R \) for each \( a \in A \). essentially just making all vertices related to themselves if they arent already.
+        \item The \textit{symmetric closure} of \( R \) is obtained by adding \( (b, a) \) to \( R \) for each \( (a, b) \in R \). so in a directed graph, just adding the arrow in the opposite way.
+        \item \textit{transitive closure:} if whenever \( (a, b) \in R \) and \( (b, c) \in R \), then \( (a, c) \in R \), for all \( a, b, c \in A \).
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Logic Inferences}
+\begin{definition}
+    \textbf{Basic Logical Inferences}
+    \begin{enumerate}
+        \item Modus Ponnes \(p\), \(p \implies q\), \(\therefore q\)
+        \item Modus Tollens \(\neg q, p \implies q\), \(\therefore \neg p\)
+        \item Addition \(p, \therefore p \cup q\)
+        \item Simplification \(p \cap q\), \(\therefore p\)
+        \item Conjunction \(p,  q\), \(\therefore p \cap q\)
+        \item Resolution \(p \cup q\), \(\neg p \cup r\), \(\therefore q \cup r\)
+        \item Hypothetical Syllogism \(p \implies q, q \implies r, \therefore p \implies r\)
+        \item Disjunctive Syllogism \(p \cup q, \neg p, \therefore q\)
+    \end{enumerate}
+\end{definition}
+\begin{theorem}
+    \textbf{Logical Inferences for Quantifiers}
+    \begin{enumerate}
+        \item Universal instantiation
+            \[
+            \frac{\forall x \, P(x)}{\therefore P(c)}
+            \]
+        \item Existential instantiation
+        \[
+        \frac{\exists x \, P(x)}{\therefore P(c) \text{ for some element } c}
+        \]
+        \item Universal generalization
+        \[
+        \frac{P(c) \text{ for an arbitrary } c}{\therefore \forall x \, P(x)}
+        \]
+        \item Existential generalization
+            \[
+            \frac{P(c) \text{ for some element } c}{\therefore \exists x \, P(x)}
+            \]
+    \end{enumerate}
+\end{theorem}
 
 
 
